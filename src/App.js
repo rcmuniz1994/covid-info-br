@@ -1,5 +1,6 @@
 import React from 'react';
-import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
 
 function App() {
   const [covidInfoBr, setCovidInfoBr] = React.useState([]);
@@ -12,11 +13,28 @@ function App() {
   
 
   return (
-    <ul>
-      {covidInfoBr.map(stateInfo => {
-        return <li key="stateInfo.uid">{stateInfo.state}</li>;
-      })}
-    </ul>
+    <Container>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Estado</th>
+            <th>Casos confirmados</th>
+            <th>Casos suspeitos</th>
+            <th>Óbitos</th>
+          </tr>
+        </thead>
+        <tbody>
+          {covidInfoBr.map(stateInfo => (
+            <tr>
+              <td>{stateInfo.state}</td>
+              <td>{stateInfo.cases}</td>
+              <td>{stateInfo.suspects}</td>
+              <td>{stateInfo.deaths}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
   );
 }
 
