@@ -60,7 +60,7 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
             <Card.Title>
               <strong>Mortes:</strong>
             </Card.Title>
-            <Card.Text>{`Mortes: ${covidInfoBr.deaths}`}</Card.Text>
+            <Card.Text>{`${covidInfoBr.deaths}`}</Card.Text>
           </Card.Body>
         </Card>
       </Col>

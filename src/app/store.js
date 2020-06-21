@@ -1,8 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { covidInfoPerStateSlice } from "../ducks/covidInfoPerStateSlice";
+import { covidInfoBrSlice } from "../ducks/covidInforBrSlice";
 
-export default configureStore({
+const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    covidInfoPerState: covidInfoPerStateSlice.reducer,
+    covidInfoBr: covidInfoBrSlice.reducer,
   },
 });
+
+export default store;
