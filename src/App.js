@@ -1,13 +1,12 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import CovidCasesTable from "./CovidCasesTable";
-import GeneralInfoCards from "./GeneralInfoCards";
-import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { retrievedCovidInfoPerState } from "./ducks/covidInfoPerStateSlice";
 import { retrievedCovidInfoBr } from "./ducks/covidInforBrSlice";
+import CovidCasesTable from "./CovidCasesTable";
+import GeneralInfoCards from "./GeneralInfoCards";
+import CovidForm from "./CovidForm";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,21 +14,25 @@ function App() {
     (state) => state.covidInfoPerState.items
   );
   const covidInfoBr = useSelector((state) => state.covidInfoBr.values);
+  const stateName = useSelector((state) => state.fiteringState.stateName);
 
   React.useEffect(() => {
     dispatch(retrievedCovidInfoPerState());
     dispatch(retrievedCovidInfoBr());
   }, [dispatch]);
 
+  const filteredInfo = covidInfoPerState.filter((s) =>
+    s.state.toLowerCase().includes(stateName.toLowerCase())
+  );
   return (
     <Container>
       <h1>COVID-19: Brasil</h1>
       <GeneralInfoCards covidInfoBr={covidInfoBr} />
-      <Row className="covid-table">
-        <Col>
-          <CovidCasesTable covidInfoPerState={covidInfoPerState} />
-        </Col>
-      </Row>
+      <CovidForm />
+      <CovidCasesTable
+        className="covid-table"
+        covidInfoPerState={filteredInfo}
+      />
     </Container>
   );
 }
