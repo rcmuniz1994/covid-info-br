@@ -14,9 +14,7 @@ const CovidCasesTable = ({ covidInfoPerState, setSelectedState, ...props }) => {
       <tbody>
         {covidInfoPerState.map((stateInfo) => (
           <tr key={stateInfo.uid}>
-            <td onClick={() => setSelectedState(stateInfo.uf)}>
-              {stateInfo.state}
-            </td>
+            <td>{stateInfo.state}</td>
             <td>{stateInfo.cases}</td>
             <td>{stateInfo.deaths}</td>
           </tr>

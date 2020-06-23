@@ -16,7 +16,6 @@ function App() {
   );
   const covidInfoBr = useSelector((state) => state.covidInfoBr.values);
   const stateName = useSelector((state) => state.fiteringState.stateName);
-  const [selectedState, setSelectedState] = React.useState(null);
 
   React.useEffect(() => {
     dispatch(retrievedCovidInfoPerState());
@@ -34,38 +33,11 @@ function App() {
         <CovidForm />
         <CovidCasesTable
           className="covid-table"
-          setSelectedState={setSelectedState}
           covidInfoPerState={filteredInfo}
         />
       </Container>
-      {selectedState && (
-        <StateInfoDialog
-          selectedState={selectedState}
-          onClose={() => setSelectedState(null)}
-        />
-      )}
     </div>
   );
 }
-
-const StateInfoDialog = ({ selectedState, onClose, ...props }) => {
-  const covidInfoPerState = useSelector(
-    (state) => state.covidInfoPerState.items
-  );
-  const stateInfo = covidInfoPerState.filter((s) => s.uf === selectedState);
-  return (
-    <Modal show onHide={onClose} animation={true}>
-      <Modal.Header closeButton>
-        <Modal.Title>{stateInfo[0].state}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>{`Casos confirmados: ${stateInfo[0].cases}`}</p>
-        <p>{`Casos descartados: ${stateInfo[0].refuses}`}</p>
-        <p>{`Casos suspeitos: ${stateInfo[0].suspects}`}</p>
-        <p>{`Mortes: ${stateInfo[0].deaths}`}</p>
-      </Modal.Body>
-    </Modal>
-  );
-};
 
 export default App;
