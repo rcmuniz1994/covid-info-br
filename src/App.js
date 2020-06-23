@@ -27,22 +27,24 @@ function App() {
     s.state.toLowerCase().includes(stateName.toLowerCase())
   );
   return (
-    <Container>
-      <h1>COVID-19: Brasil</h1>
-      <GeneralInfoCards covidInfoBr={covidInfoBr} />
-      <CovidForm />
-      <CovidCasesTable
-        className="covid-table"
-        setSelectedState={setSelectedState}
-        covidInfoPerState={filteredInfo}
-      />
+    <div>
+      <Container>
+        <h1>COVID-19: Brasil</h1>
+        <GeneralInfoCards covidInfoBr={covidInfoBr} />
+        <CovidForm />
+        <CovidCasesTable
+          className="covid-table"
+          setSelectedState={setSelectedState}
+          covidInfoPerState={filteredInfo}
+        />
+      </Container>
       {selectedState && (
         <StateInfoDialog
           selectedState={selectedState}
           onClose={() => setSelectedState(null)}
         />
       )}
-    </Container>
+    </div>
   );
 }
 
