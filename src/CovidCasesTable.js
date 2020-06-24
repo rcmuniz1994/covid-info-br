@@ -31,7 +31,7 @@ const CovidCasesTable = ({ props }) => {
   }
 
   return (
-    <Table striped bordered hover>
+    <Table striped bordered hover variant="dark">
       <thead>
         <tr>
           <th>Estado</th>

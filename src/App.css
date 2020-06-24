@@ -1,6 +1,22 @@
+body {
+  background-image: url("./static/virus-4835301-1920.jpg");
+}
+#panel-background {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+#title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+}
+
 .covid-table,
 .covid-form {
   padding: 15px 0px;
+  color: whitesmoke;
 }
 
 .covid-progressbar {

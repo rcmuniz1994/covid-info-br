@@ -19,9 +19,9 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div id="panel-background">
       <Container>
-        <h1>COVID-19: Brasil</h1>
+        <h1 id="title">COVID-19: Brasil</h1>
         <GeneralInfoCards
           covidInfoBr={covidInfoBr}
           isLoading={isLoading}
