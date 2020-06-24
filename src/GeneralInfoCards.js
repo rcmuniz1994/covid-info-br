@@ -38,7 +38,7 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
         <Card>
           <Card.Body id="covid-cards-cases">
             <Card.Title>
-              <strong>Em tratamento:</strong>
+              <strong>Ativos:</strong>
             </Card.Title>
             <Card.Text>{`${covidInfoBr.cases}`}</Card.Text>
           </Card.Body>
