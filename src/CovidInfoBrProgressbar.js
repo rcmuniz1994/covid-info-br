@@ -48,6 +48,7 @@ const CovidInfoBrProgressbar = ({ covidInfoBr, isLoading, isError }) => {
         striped
         variant="success"
         now={recoveredPercentage}
+        animated
         label={`${recoveredPercentage}%`}
         key={1}
       />
@@ -56,6 +57,7 @@ const CovidInfoBrProgressbar = ({ covidInfoBr, isLoading, isError }) => {
         striped
         variant="warning"
         now={activePercentage}
+        animated
         label={`${activePercentage}%`}
         key={2}
       />
@@ -64,6 +66,7 @@ const CovidInfoBrProgressbar = ({ covidInfoBr, isLoading, isError }) => {
         striped
         variant="danger"
         now={deathPercentage}
+        animated
         label={`${deathPercentage}%`}
         key={3}
       />
