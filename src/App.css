@@ -2,3 +2,29 @@
 .covid-form {
   padding: 15px 0px;
 }
+
+.covid-progressbar {
+  color: #000000;
+  margin-top: 15px;
+}
+
+#covid-cards-recovered:hover {
+  cursor: pointer;
+  color: green;
+  outline: 1px solid green;
+  border: none;
+}
+
+#covid-cards-deaths:hover {
+  cursor: pointer;
+  color: red;
+  outline: 1px solid red;
+  border: none;
+}
+
+#covid-cards-cases:hover {
+  cursor: pointer;
+  color: rgb(255, 193, 7);
+  outline: 1px solid rgb(255, 193, 7);
+  border: none;
+}

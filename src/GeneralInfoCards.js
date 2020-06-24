@@ -36,7 +36,7 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
       </Col>
       <Col>
         <Card>
-          <Card.Body>
+          <Card.Body id="covid-cards-cases">
             <Card.Title>
               <strong>Em tratamento:</strong>
             </Card.Title>
@@ -46,7 +46,7 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
       </Col>
       <Col>
         <Card>
-          <Card.Body>
+          <Card.Body id="covid-cards-recovered">
             <Card.Title>
               <strong>Recuperados:</strong>
             </Card.Title>
@@ -56,7 +56,7 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
       </Col>
       <Col>
         <Card>
-          <Card.Body>
+          <Card.Body id="covid-cards-deaths">
             <Card.Title>
               <strong>Mortes:</strong>
             </Card.Title>
