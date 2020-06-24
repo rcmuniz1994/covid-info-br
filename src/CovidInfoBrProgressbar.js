@@ -36,7 +36,6 @@ const CovidInfoBrProgressbar = ({ covidInfoBr, isLoading, isError }) => {
           animated
           variant="danger"
           now={100}
-          label={"Erro ao carregar os dados"}
         />
       </ProgressBar>
     );

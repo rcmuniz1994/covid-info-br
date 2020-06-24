@@ -28,7 +28,7 @@ const { setCovidInfoBr, setLoading, setError } = covidInfoBrSlice.actions;
 
 export const retrievedCovidInfoBr = () => (dispatch) => {
   dispatch(setLoading());
-  fetch("https://covid199-brazil-api.now.sh/api/report/v1/brazil")
+  fetch("https://covid19-brazil-api.now.sh/api/report/v1/brazil")
     .then((response) => response.json())
     .then((covidDataBr) => {
       const retrievedCovidInfoBr = covidDataBr.data;

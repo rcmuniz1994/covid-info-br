@@ -2,10 +2,17 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import Alert from "react-bootstrap/Alert";
 import moment from "moment";
 import "moment/locale/pt-br";
 
-const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
+const GeneralInfoCards = ({ covidInfoBr, isLoading, isError, ...props }) => {
+  if (isError) {
+    return (
+      <Alert variant="danger">Erro ao carregar os dados gerais do Brasil</Alert>
+    );
+  }
+
   return (
     <Row>
       <Col>
@@ -15,11 +22,13 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
               <strong>Atualizado em:</strong>
             </Card.Title>
             <Card.Text>
-              {`${moment(covidInfoBr.updated_at)
-                .locale("pt-br")
-                .format("L")} - ${moment(covidInfoBr.updated_at)
-                .locale("pt-br")
-                .format("LT")}`}
+              {(isLoading && "Carregando...") ||
+                (covidInfoBr &&
+                  `${moment(covidInfoBr.updated_at)
+                    .locale("pt-br")
+                    .format("L")} - ${moment(covidInfoBr.updated_at)
+                    .locale("pt-br")
+                    .format("LT")}`)}
             </Card.Text>
           </Card.Body>
         </Card>
@@ -30,7 +39,10 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
             <Card.Title>
               <strong>Confirmados:</strong>
             </Card.Title>
-            <Card.Text>{`${covidInfoBr.confirmed}`}</Card.Text>
+            <Card.Text>
+              {(isLoading && "Carregando...") ||
+                (covidInfoBr && `${covidInfoBr.confirmed}`)}
+            </Card.Text>
           </Card.Body>
         </Card>
       </Col>
@@ -40,7 +52,10 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
             <Card.Title>
               <strong>Ativos:</strong>
             </Card.Title>
-            <Card.Text>{`${covidInfoBr.cases}`}</Card.Text>
+            <Card.Text>
+              {(isLoading && "Carregando...") ||
+                (covidInfoBr && `${covidInfoBr.cases}`)}
+            </Card.Text>
           </Card.Body>
         </Card>
       </Col>
@@ -50,7 +65,10 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
             <Card.Title>
               <strong>Recuperados:</strong>
             </Card.Title>
-            <Card.Text>{`${covidInfoBr.recovered}`}</Card.Text>
+            <Card.Text>
+              {(isLoading && "Carregando...") ||
+                (covidInfoBr && `${covidInfoBr.recovered}`)}
+            </Card.Text>
           </Card.Body>
         </Card>
       </Col>
@@ -60,7 +78,10 @@ const GeneralInfoCards = ({ covidInfoBr, ...props }) => {
             <Card.Title>
               <strong>Mortes:</strong>
             </Card.Title>
-            <Card.Text>{`${covidInfoBr.deaths}`}</Card.Text>
+            <Card.Text>
+              {(isLoading && "Carregando...") ||
+                (covidInfoBr && `${covidInfoBr.deaths}`)}
+            </Card.Text>
           </Card.Body>
         </Card>
       </Col>
