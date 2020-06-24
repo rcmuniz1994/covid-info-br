@@ -2,7 +2,7 @@ import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "./App.css";
 
-const CovidInfoBrProgressbar = ({ covidInfoBr }) => {
+const CovidInfoBrProgressbar = ({ covidInfoBr, isLoading, isError }) => {
   const recoveredPercentage = Math.round(
     (covidInfoBr.recovered / covidInfoBr.confirmed) * 100
   );
@@ -12,6 +12,36 @@ const CovidInfoBrProgressbar = ({ covidInfoBr }) => {
   const activePercentage = Math.round(
     (covidInfoBr.cases / covidInfoBr.confirmed) * 100
   );
+
+  if (isLoading) {
+    return (
+      <ProgressBar className="covid-progressbar">
+        <ProgressBar
+          className="text-dark font-weight-bold"
+          striped
+          animated
+          now={100}
+          label={"Carregando..."}
+        />
+      </ProgressBar>
+    );
+  }
+
+  if (isError) {
+    return (
+      <ProgressBar className="covid-progressbar">
+        <ProgressBar
+          className="text-dark font-weight-bold"
+          striped
+          animated
+          variant="danger"
+          now={100}
+          label={"Erro ao carregar os dados"}
+        />
+      </ProgressBar>
+    );
+  }
+
   return (
     <ProgressBar className="covid-progressbar">
       <ProgressBar

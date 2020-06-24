@@ -10,7 +10,9 @@ import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
-  const covidInfoBr = useSelector((state) => state.covidInfoBr.values);
+  const { isLoading, isError, values: covidInfoBr } = useSelector(
+    (state) => state.covidInfoBr
+  );
 
   React.useEffect(() => {
     dispatch(retrievedCovidInfoBr());
@@ -20,8 +22,16 @@ function App() {
     <div>
       <Container>
         <h1>COVID-19: Brasil</h1>
-        <GeneralInfoCards covidInfoBr={covidInfoBr} />
-        <CovidInfoBrProgressbar covidInfoBr={covidInfoBr} />
+        <GeneralInfoCards
+          covidInfoBr={covidInfoBr}
+          isLoading={isLoading}
+          isError={isError}
+        />
+        <CovidInfoBrProgressbar
+          covidInfoBr={covidInfoBr}
+          isLoading={isLoading}
+          isError={isError}
+        />
         <CovidForm />
         <CovidCasesTable className="covid-table" />
       </Container>

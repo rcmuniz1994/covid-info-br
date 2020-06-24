@@ -6,6 +6,7 @@
 .covid-progressbar {
   color: #000000;
   margin-top: 15px;
+  height: 25px;
 }
 
 #covid-cards-recovered:hover {
