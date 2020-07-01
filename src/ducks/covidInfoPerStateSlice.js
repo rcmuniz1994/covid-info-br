@@ -32,7 +32,7 @@ const {
 
 export const retrievedCovidInfoPerState = () => (dispatch) => {
   dispatch(setLoading());
-  fetch("http://covid19-brazil-api.now.sh/api/report/v1")
+  fetch("https://covid19-brazil-api.now.sh/api/report/v1")
     .then((response) => response.json())
     .then((covidDataPerState) => {
       const retrievedCovidInfoPerState = covidDataPerState.data;
