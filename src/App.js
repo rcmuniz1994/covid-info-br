@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import { Paper, Typography, Box } from '@material-ui/core';
 import { useDispatch, useSelector } from "react-redux";
 import { retrievedCovidInfoBr } from "./ducks/covidInforBrSlice";
 import CovidCasesTable from "./CovidCasesTable";
@@ -20,21 +21,29 @@ function App() {
 
   return (
     <div id="panel-background">
-      <Container>
-        <h1 id="title">COVID-19: Brasil</h1>
-        <GeneralInfoCards
-          covidInfoBr={covidInfoBr}
-          isLoading={isLoading}
-          isError={isError}
-        />
-        <CovidInfoBrProgressbar
-          covidInfoBr={covidInfoBr}
-          isLoading={isLoading}
-          isError={isError}
-        />
-        <CovidForm />
-        <CovidCasesTable className="covid-table" />
-      </Container>
+      <Box ml={20} mr={20}>
+        <Paper>
+          <Container>
+            <Box m={5}>
+              <br/>
+              <Typography variant="h2" id="title">COVID-19: Brasil</Typography>
+            </Box>
+            <GeneralInfoCards
+              covidInfoBr={covidInfoBr}
+              isLoading={isLoading}
+              isError={isError}
+            />
+            <CovidInfoBrProgressbar
+              covidInfoBr={covidInfoBr}
+              isLoading={isLoading}
+              isError={isError}
+            />
+            <CovidForm />
+            <CovidCasesTable className="covid-table" />
+          </Container>
+          <br/>
+        </Paper>
+      </Box>
     </div>
   );
 }

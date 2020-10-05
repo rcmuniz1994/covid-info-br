@@ -1,5 +1,8 @@
 body {
   background-image: url("./static/virus-4835301-1920.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #panel-background {
   height: 100vh;
@@ -10,7 +13,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: white;
+  color: black;
 }
 
 .covid-table,
