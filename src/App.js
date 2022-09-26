@@ -1,23 +1,19 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import { Paper, Typography, Box } from '@material-ui/core';
-import { useDispatch, useSelector } from "react-redux";
-import { retrievedCovidInfoBr } from "./ducks/covidInforBrSlice";
+import { Paper, Typography, Box } from "@material-ui/core";
 import CovidCasesTable from "./CovidCasesTable";
 import GeneralInfoCards from "./GeneralInfoCards";
 import CovidInfoBrProgressbar from "./CovidInfoBrProgressbar";
 import CovidForm from "./CovidForm";
 import "./App.css";
+import { useGetCovidInfoBrQuery } from "./ducks/apiSlice";
 
 function App() {
-  const dispatch = useDispatch();
-  const { isLoading, isError, values: covidInfoBr } = useSelector(
-    (state) => state.covidInfoBr
-  );
-
-  React.useEffect(() => {
-    dispatch(retrievedCovidInfoBr());
-  }, [dispatch]);
+  const {
+    data: covidInfoBr,
+    isLoading,
+    error: isError,
+  } = useGetCovidInfoBrQuery();
 
   return (
     <div id="panel-background">
@@ -25,8 +21,10 @@ function App() {
         <Paper>
           <Container>
             <Box m={5}>
-              <br/>
-              <Typography variant="h2" id="title">COVID-19: Brasil</Typography>
+              <br />
+              <Typography variant="h2" id="title">
+                COVID-19: Brasil
+              </Typography>
             </Box>
             <GeneralInfoCards
               covidInfoBr={covidInfoBr}
@@ -41,7 +39,7 @@ function App() {
             <CovidForm />
             <CovidCasesTable className="covid-table" />
           </Container>
-          <br/>
+          <br />
         </Paper>
       </Box>
     </div>

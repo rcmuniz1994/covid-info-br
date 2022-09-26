@@ -1,14 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { covidInfoPerStateSlice } from "../ducks/covidInfoPerStateSlice";
-import { covidInfoBrSlice } from "../ducks/covidInforBrSlice";
+import { apiSlice } from "../ducks/apiSlice";
 import { filteringStateSlice } from "../ducks/filteringStateSlice";
 
 const store = configureStore({
   reducer: {
-    covidInfoPerState: covidInfoPerStateSlice.reducer,
-    covidInfoBr: covidInfoBrSlice.reducer,
     fiteringState: filteringStateSlice.reducer,
+    [apiSlice.reducerPath]: apiSlice.reducer
   },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiSlice.middleware)
 });
 
 export default store;
